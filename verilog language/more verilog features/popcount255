@@ -1,0 +1,22 @@
+module top_module( 
+    input [254:0] in,
+    output [7:0] out );
+    reg [7:0] n;
+    always@(*)
+        begin
+            n[7:0] = 0;
+            for(int i = 0; i<255; i = i+1)begin
+                if(in[i] == 1'b1) n = n + 1;
+                else n = n ;
+            end
+            out = n;
+        end
+  
+endmodule
+
+/*
+1，always块中所有语句只能在begin end中写 
+2，wire reg的声明可以放在always块外
+3，注意for语句写法 Verilog中没有i++ i-- 且for语句是需要begin end的
+4，if如果有多个语句 需要加begin end 如果只有一条语句 则可以省略begin end
+*/
